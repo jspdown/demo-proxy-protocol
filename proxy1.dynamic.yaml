@@ -1,0 +1,15 @@
+tcp:
+  routers:
+    proxy2:
+      rule: HostSNI(`*`)
+      service: proxy2
+      entryPoints:
+        - proxy
+
+  services:
+    proxy2:
+      loadBalancer:
+        proxyProtocol: 
+          version: 1
+        servers:
+          - address: 127.0.0.1:9001
